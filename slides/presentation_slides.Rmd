@@ -2,7 +2,7 @@
 title: "R Applications in High Performance Computing (HPC)"
 subtitle: "From Zero to Hero in 30 Minutes - St. Jude Edition"
 author: "Zhuo Qu"
-date: "2025-01-08"
+date: "2025-07-25"
 output:
   ioslides_presentation:
     widescreen: true
@@ -301,10 +301,11 @@ results <- cancer %>% group_by(sex) %>%
 #BSUB -W 00:10
 #BSUB -R "rusage[mem=2048]"
 #BSUB -J survival_analysis
-#BSUB -o logs/output.%J.log
-#BSUB -e logs/error.%J.log
+#BSUB -o log/output.%J.log
+#BSUB -e log/error.%J.log
 
 BASE_DIR=/research/rgs01/home/clusterHome/zqu/workshop07252025/code/
+cd $BASE_DIR
 
 module load R/4.4.0
 Rscript R/survival_analysis.R
@@ -409,10 +410,11 @@ write.csv(data.frame(index = 1:1000, max = results_parallel),
 #BSUB -R "span[hosts=1]"        # All cores on one node
 #BSUB -W 00:30  # Runtime limit hh:mm
 #BSUB -R "rusage[mem=100000]"
-#BSUB -o logs/output.%J.log
-#BSUB -e logs/error.%J.log
+#BSUB -o log/output.%J.log
+#BSUB -e log/error.%J.log
 
 BASE_DIR=/research/rgs01/home/clusterHome/zqu/workshop07252025/code/
+cd $BASE_DIR
 
 module load R/4.4.0
 Rscript R/bootstrap_parallel_hpc.R
