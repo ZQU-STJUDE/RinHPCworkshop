@@ -1,0 +1,58 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@noderome113>
+Subject: Job 265015172: <parallel_bootstrap_10000> in cluster <hpcf_research_cluster> Exited
+
+Job <parallel_bootstrap_10000> was submitted from host <noderome106> by user <zqu> in cluster <hpcf_research_cluster> at Thu Jul 24 14:30:42 2025
+Job was executed on host(s) <10*noderome113>, in queue <priority>, as user <zqu> in cluster <hpcf_research_cluster> at Thu Jul 24 14:30:47 2025
+</home/zqu> was used as the home directory.
+</home/zqu/workshop07252025/code/submission_scripts> was used as the working directory.
+Started at Thu Jul 24 14:30:47 2025
+Terminated at Thu Jul 24 14:30:52 2025
+Results reported at Thu Jul 24 14:30:52 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -n 10
+#BSUB -R "span[hosts=1]"
+#BSUB -q priority
+#BSUB -W 00:30
+#BSUB -R "rusage[mem=10000]"
+#BSUB -J parallel_bootstrap_10000
+#BSUB -o log/output.%J.log
+#BSUB -e log/error.%J.log
+
+BASE_DIR=/research/rgs01/home/clusterHome/zqu/workshop07252025/code/
+
+cd $BASE_DIR
+
+module load R/4.4.0
+Rscript  R/bootstrap_parallel_hpc.R
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time :                                   0.05 sec.
+    Max Memory :                                 1 MB
+    Average Memory :                             1.00 MB
+    Total Requested Memory :                     100000.00 MB
+    Delta Memory :                               99999.00 MB
+    Max Swap :                                   -
+    Max Processes :                              1
+    Max Threads :                                1
+    Run time :                                   5 sec.
+    Turnaround time :                            10 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <log/error.265015172.log> for stderr output of this job.
+
